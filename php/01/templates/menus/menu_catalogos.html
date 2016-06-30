@@ -1,0 +1,139 @@
+                    <li id="subMenuCatalogos"> 
+                        <a href="#" class="dropdown-toggle">
+                                <i class="icon-book"></i>
+                                <span class="menu-text"> Catálogos </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">                            
+
+                            <li>
+                                <a href="#" id="cat_beneficios_list">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text">Bloques</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="cat_subcategorias_list">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text">Servicios</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="asoc_subcat_ben">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text">Servicios > Bloques</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="cat_localidades">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text">Comunidades</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+<script type="text/javascript">
+jQuery(function($) {
+
+    $("#preloaderPrincipal").show();
+
+
+
+    if ($("#cat_beneficios_list").length) {
+        $("#cat_beneficios_list").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "cat-beneficios-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Catálogo de Bloques'));
+                }, "html");
+            return false;
+        });
+    }
+
+    if ($("#cat_subcategorias_list").length) {
+        $("#cat_subcategorias_list").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "cat-subcategorias-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Catálogo de Servicios'));
+                }, "html");
+            return false;
+        });
+    }
+
+    if ($("#asoc_subcat_ben").length) {
+        $("#asoc_subcat_ben").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "asoc-subcat-beneficio-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Asociar Servicios a Bloques'));
+                }, "html");
+            return false;
+        });
+    }
+
+    if ($("#cat_localidades").length) {
+        $("#cat_localidades").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "cat-localidades-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Catálogo de Localidades'));
+                }, "html");
+            return false;
+        });
+    }
+
+    $("#subMenuCatalogos li").on("click", function(event) {
+        event.preventDefault();
+        $(".nav-list li").removeClass("active");
+        if ($('.open').length === null) {
+            $(this).addClass("active open");
+        }
+    });
+
+    function cfgBase0(){
+        resizeScreen();
+        $("#contentLevel3").html("");
+        $("#contentLevel3").hide();
+        $("#contentProfile").html("");
+        $("#contentProfile").hide();
+        $("#contentMain").show("");
+        $("#contentMain").html("");
+        $("#preloaderPrincipal").show();        
+        obj.setIsTimeLine(false);
+    }
+
+
+    $("#preloaderPrincipal").hide();
+
+
+})
+
+</script>

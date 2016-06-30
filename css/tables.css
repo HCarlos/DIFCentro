@@ -1,0 +1,271 @@
+@charset "UTF-8";
+/* CSS Document */
+
+table,th,tr,td{padding:0; margin:0; border:0;}
+
+.table_base{ 
+	position:relative;
+	display:inline-block;
+	width:96%;
+	height:auto;
+	border-collapse:collapse;
+	border:0px;
+	padding:0px;
+	margin:0px;
+	color:black;
+}
+
+.table_base th, .table_base tr, .table_base td { height:1em; line-height:1em; padding:0.3em; border-bottom:#CCC 1px solid;}
+.table_base tr { height:1em; line-height:1em; padding:0.3em; border-bottom:#CCC 1px solid;}
+.table_base tr:hover{ background-color:#BBB; cursor:pointer;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+
+
+
+th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+tfoot, tfoot tr, tfoot tr td { height:2em !important;}
+
+.inputDetFac {
+    font-size: 0.80em !important;
+}
+
+.detFac {
+	position:relative;
+vertical-align:top;
+background:#FFF;
+padding:0.25em;
+font-size: 0.80em !important;
+width: 100% !important;
+}
+.detFac tr{  border:none; width: 100% !important;}
+.detFac tr th{ background-color:#333; color:#FFF; padding:0.5em; border:0; position:relative;}
+.detFac tr td{ padding:0.2em !important; border:1px #CCC solid !important; position:relative;}
+.detFac tr td input{ position:relative; display:inline-block; border:0; }
+.detFac tr td select.listaContratoDetalles{ position:relative; display:inline-block; width:60px; }
+.detFac tr td input.inw50{ width:50px;}
+.detFac tr td input.inw80{ width:80px;}
+.detFac tr td input.inw100{ width:100px;}
+.detFac tr td input.inw200{ width:200px;}
+.detFac tr td input.inwall{ width:100% !important; font-size: 1.2em !important;}
+.detFac caption{ padding:0.5em; font:bold; color:#333;}
+.colDetFac{ background-color:#333; color:#FFF; border:0; }
+
+#divBotonesDerechos{position:relative; display:inline-block; vertical-align:top; margin-left:1em; width:100px;}
+
+.facPag{background-color:#C99 !important;}
+
+
+.tblReports{ 
+    position:relative;
+    display:inline-block;
+    width:96%;
+    height:auto;
+    border-collapse:collapse;
+    border:0px;
+    padding:0px;
+    margin:0px;
+    color:black;
+}
+
+.tblReports th, .tblReports tr, .tblReports td { height:2em; line-height:2em; padding:0.5em; }
+
+
+
+
+
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc; 
+    font-size: 0.8em !important;        
+}
+
+.bordered tr:hover {
+    background:#FFF0BA; /* #fbf8e9; */
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 5px 10px;
+    text-align: left;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+
+
+
+
+
+
+.capVotos {
+	position:relative;
+display:inline-block;
+vertical-align:top;
+background:#FFF;
+padding:0.5em;
+width:96% !important;
+}
+.capVotos tr{  border:none;width:100% !important; }
+.capVotos th:first-child {-moz-border-radius: 0 0 0 0;-webkit-border-radius: 0 0 0 0;border-radius: 0 0 0 0;}
+
+.capVotos tr th{ background-color:#333; color:#FFF; padding:0.5em; border:0; position:relative;}
+.capVotos tr td{ padding:0.2em !important; border:1px #EEE solid !important; position:relative;}
+.capVotos tr td.noBorder{ padding:0.2em !important; border:0px #EEE solid !important; position:relative;}
+.capVotos tr td input{ position:relative; display:inline-block; border:0; }
+.capVotos tr td select.listaContratoDetalles{ position:relative; display:inline-block; width:60px; }
+.capVotos tr td input.inw50{ width:50px;}
+.capVotos tr td input.inw80{ width:80px;}
+.capVotos tr td input.inw80T{ width:80px; text-align:right !important;}
+.capVotos tr td input.inw100{ width:100px;}
+.capVotos tr td input.inw200{ width:370px;}
+.capVotos caption{ padding:0.5em; font:bold; color:#333;}
+.inw80{ width:80px;}
+.inw200{ width:200px;}
+.inw100p{ width:100% !important;}
+
+#thFolio{width:60px !important;}
+#thFecha{width:80px !important;}
+#thNotario{width:100px !important;}
+#thSolicitante{width:100px !important;}
+/*#thFolioReal{width:200px !important; text-align: right;}*/
+#thCuenta{width:100px !important; text-align: right;}
+#thPropietario{width:100px !important;}
+#thValorTerreno{width:140px !important; text-align: right;}
+#thValorConst{width:140px !important; text-align: right;}
+#thValorCatastral{width:100px !important; text-align: right;}
+#thEmptyDetFac{width:100px !important; text-align: right;}
+
+.tdFolio{width:60px !important;}
+.tdFecha{width:80px !important;}
+.tdNotario{width:200px !important;}
+.tdSolicitante{width:200px !important;}
+/*.tdFolioReal{width:200px !important; text-align: right;}*/
+.tdCuenta{width:100px !important; text-align: right !important; padding-right: 0.3em !!important;}
+.tdPropietario{width:200px !important;}
+.tdValorTerreno{width:140px !important; text-align: right !important;}
+.tdValorConst{width:140px !important; text-align: right !important;}
+.tdValorCatastral{width:140px !important; text-align: right !important;}
+.tdEmptyDetFac{width:100px !important; text-align: right !important;}
+
+.btnRefresh{cursor: pointer !important; margin-left: 0.5em;}
+.btnAddRegistry{cursor: pointer !important; margin-left: 0.5em;}
+.btnFindModule{cursor: pointer !important;}
+.btnPrintList{cursor: pointer !important; margin-left: 0.5em;}
+.btnVentaFolio{cursor: pointer !important; margin-left: 0.5em;}
+
+.tbl10W{width:10px !important;}
+.tbl20W{width:20px !important;}
+.tbl30W{width:30px !important;}
+.tbl40W{width:40px !important;}
+.tbl50W{width:50px !important;}
+.tbl60W{width:60px !important;}
+.tbl70W{width:70px !important;}
+.tbl80W{width:80px !important;}
+.tbl90W{width:90px !important;}
+.tbl100W{width:100px !important;}
+.tbl110W{width:110px !important;}
+.tbl120W{width:120px !important;}
+.tbl130W{width:130px !important;}
+.tbl140W{width:140px !important;}
+.tbl150W{width:150px !important;}
+.tbl160W{width:160px !important;}
+.tbl170W{width:170px !important;}
+.tbl180W{width:180px !important;}
+.tbl190W{width:190px !important;}
+.tbl200W{width:200px !important;}
+.tbl250W{width:250px !important;}
+.tbl300W{width:300px !important;}
+
+.chikirimbita{font-size: 0.7em !important; }

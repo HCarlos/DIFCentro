@@ -1,0 +1,208 @@
+<div class="page-content">
+	<div class="page-header position-relative">
+		<h1>
+			Fijar Evaluaciones
+		</h1>
+	</div><!--/.page-header-->
+
+	<div class="row-fluid">
+		<div class="span12">
+			<!--PAGE CONTENT BEGINS-->
+
+			<div class="row-fluid">
+				<div class="span6">
+
+
+
+					<div class="widget-container-span ui-sortable">
+						<div style="opacity: 1;" class="widget-box">
+							<div class="widget-header header-color-pink">
+								<h5 id="titleNiv">Nivel</h5>
+
+								<div class="widget-toolbar">
+									<a href="#" data-action="collapse">
+										<i class="1 icon-chevron-up bigger-125"></i>
+									</a>
+								</div>
+
+							</div>
+
+							<div class="widget-body">
+								<form id="frmSetEvalConfig"  class="form">
+ 
+									<div class="widget-main">
+
+
+						                <table>
+
+						                    <tr>
+						                        <td><label for="rfc" class="textRight">Predeterminado</label></td>
+						                        <td>
+						                            <input class="altoMoz" name="evalpred" id="evalpred" type="number" min="1" max="8" autofocus>
+						                      </td>
+						                    </tr>
+						                    <tr>
+						                        <td><label for="curp" class="marginLeft2em textRight">Modificable</label></td>
+						                        <td>
+						                            <input class="altoMoz" name="evalmod" id="evalmod" type="number" min="1" max="8">
+						                        </td>
+						                    </tr>
+
+										</table>
+
+
+									</div>
+
+									<div class="widget-toolbox padding-8 clearfix">
+										<div class="pull-right">
+										<button type="submit" class="btn btn-primary ">
+											<i class="icon-save icon-on-right"></i>
+											Guardar
+										</button>
+										<button class="btn btn-default " id="closeFormSetEvalConfig">
+											<i class="icon-signout"></i>
+											Cerrar
+										</button>
+										</div>
+									</div>
+
+								    <input type="hidden" name="clavenivelacceso" id="clavenivelacceso" value="">
+								    <input type="hidden" name="user" id="user" value="">
+								    <input type="hidden" name="hevalpred" id="hevalpred" value="">
+								    <input type="hidden" name="hevalmod" id="hevalmod" value="">
+
+
+								</form>
+							</div>
+						</div>
+					</div>
+
+
+				</div><!--/span6 1-->
+
+				<div class="span6">
+
+				</div><!--/span6 2-->
+
+			</div>
+
+		</div><!--/.span12-->
+	</div><!--/.row-fluid-->
+
+</div>
+
+<script type="text/javascript"> 
+jQuery(function($) {
+
+	var stream = io.connect(obj.getValue(4));
+
+	var clavenivelacceso = parseInt(localStorage.ClaveNivelAcceso,0);
+	var user = localStorage.nc;
+	var evalpred = "";
+	var evalmod = "";
+	var titulo = ""
+	var cad = "";
+
+	$("#clavenivelacceso").val(clavenivelacceso);
+	$("#user").val(user);
+	switch(clavenivelacceso){
+		case 8:
+				evalpred = "edk";
+				evalmod = "emk";
+				titulo = "Preescolar";
+				break;
+		case 9:
+				evalpred = "edn";
+				evalmod = "emn";
+				titulo = "1ro de Inglés";
+				break;
+		case 10:
+				evalpred = "edp";
+				evalmod = "emp";
+				titulo = "Primaria";
+				break;
+		case 11:
+				evalpred = "eds";
+				evalmod = "ems";
+				titulo = "Secundaria";
+				break;
+		case 12:
+				evalpred = "edr";
+				evalmod = "emr";
+				titulo = "Preparatoria";
+				break;
+	}
+
+
+	$("#titleNiv").html(titulo);
+
+	$("#hevalpred").val(evalpred);
+	$("#hevalmod").val(evalmod);
+
+	// Get Predeter
+	cad = "u="+user+"&llave="+evalpred;
+    $.post(obj.getValue(0) + "data/", {o:1, t:-4, c:cad, p:10, from:0, cantidad:0, s:''},
+        function(json) {
+            $("#evalpred").val(json[0].valor);
+    }, "json");
+
+	// Get Modi
+	cad = "u="+user+"&llave="+evalmod;
+    $.post(obj.getValue(0) + "data/", {o:1, t:-4, c:cad, p:10, from:0, cantidad:0, s:''},
+        function(json) {
+            $("#evalmod").val(json[0].valor);
+    }, "json");
+
+
+    $("#frmSetEvalConfig").unbind("submit");
+	$("#frmSetEvalConfig").on("submit",function(event){
+		event.preventDefault();
+
+		$("#preloaderPrincipal").show();
+
+		var queryString = $(this).serialize();	
+	    
+		// alert(queryString)
+		// return false;
+
+		// var data = new FormData();
+
+		// if (validForm()){
+            $.post(obj.getValue(0) + "data/", {o:21, t:1, c:queryString, p:2, from:0, cantidad:0, s:''},
+            function(json) {
+            		if (json[0].msg=="OK"){
+            			alert("Datos guardados con éxito.");
+						stream.emit("cliente", {mensaje: "PLATSOURCE-CONFIG-PROP-"+clavenivelacceso});
+						closeScrennConfig();
+        			}else{
+						$("#preloaderPrincipal").hide();
+        				alert(json[0].msg);	
+        			}
+        	}, "json");
+		// }else{
+		// 	$("#preloaderPrincipal").hide();
+		// }
+
+	});
+
+
+
+	$("#closeFormSetEvalConfig").on("click",function(event){
+		event.preventDefault();
+		closeScrennConfig();
+		return false;
+	});
+
+	function closeScrennConfig(){
+		$("#preloaderPrincipal").hide();
+		$("#contentProfile").hide(function(){
+			$("#contentProfile").html("");
+			$("#contentMain").show();
+			$('#breadcrumb').html(getBar('Inicio,'));
+		});
+		resizeScreen();
+	}
+
+		
+});		
+</script>

@@ -1,0 +1,36 @@
+.mybody{
+    background: url("img/carbon.png") top left repeat !important;
+}
+
+.outer {
+    display: inline;
+    top: 0;
+}
+
+.middle {
+    display: inline;
+    top: 50%;
+    position: relative;
+}
+
+.inner {
+    display: inline;
+    top: -50%;
+    position: relative;
+}
+
+.banner-logo{
+	height: 190px; 
+	width: 486px; 
+	margin: 0 auto !important;
+	margin-bottom: 16px !important;
+}
+
+.banner-widget{
+    height: 100% !important; 
+    width: 460px !important; 
+    margin: 0 auto !important;
+    margin-bottom: 16px !important;
+}
+
+.banner-logo p{margin-left: 1em; }

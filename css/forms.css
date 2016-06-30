@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* */
+
+/* Init -> FORMS */
+.form{
+	position:relative;
+	width: 100% !important;
+	display:inline-block !important;
+	vertical-align: top !important;
+	padding:0.25em;
+	margin: 0;
+}
+
+.form label{
+	display: inline-block;
+	text-align:left;
+	padding:0.25em;
+	font-size: 0.90em !important;
+	font-weight: bolder !important;
+}
+.form input{
+	display: inline-block;
+	color:#2394C4; /* Color de la Letra de los Input */
+	font-size: 0.90em !important;
+}
+.form select{
+	display: inline-block;
+	color:#2394C4; /* Color de la Letra de los Input */
+	font-size: 0.90em !important;
+}
+
+.form h3{ position:relative; text-align:left; margin:0px; border:none; padding-bottom:0.4em;
+		color:#03C; border-bottom:1px #DDD solid; width:100%; margin-bottom:0.8em;}
+
+.form fieldset{ border:none; margin:0px; padding:0px; margin-bottom:0.7em; width:100%; text-align:left; display:inline-block;}
+.fieldset2{margin-bottom:-0.5em !important;}
+
+.fieldset-margin-left{ margin-left:1em;}
+
+/* End <- FORMS */
+
+
+#form_test{position:relative; width:100%;}
+#form_test fieldset{position:relative; width:100%; text-align:left; border:none;}
+
+
+
+.1emBottom {
+	height: 2em !important; 
+	margin-bottom:1em !important; 
+	line-height:1.5em !important;
+}
+
+.form2{
+	position:relative;
+	background:#263E5A;
+	color: #FFF;
+	padding-top:0.3em;
+	padding-left:0.2em;
+	padding-right:0.2em;
+	display:inline-block;
+}
+
+.form2 label{
+	display: inline-block;
+	text-align:left;
+	font-weight: bolder;
+}
+.form2 input{
+	display: inline-block;
+	color:#2394C4; /* Color de la Letra de los Input */
+}
+
+.form2 input[type=submit]{
+	display: inline-block;
+	background-color: #721b00;
+	border:none;
+	border-radius:0.3em;
+	box-shadow: rgba(0,0,0,0.5) 5px -5px 10px inset;
+	color: #FFF;
+	cursor: pointer;
+	text-align:right;
+	padding:0.3em 0.5em;
+}
+
+.form2 h3{ position:relative; text-align:left; margin:0px; border:none; padding-bottom:0.4em;
+		color:#03C; border-bottom:1px #DDD solid; width:100%; margin-bottom:0.8em;}
+.form2 fieldset{ border:none; margin:0px; padding:0px; margin-bottom:0em; width:100%; text-align:left; display:inline-block;}
+
+#expand{position:relative; float:right; margin-right:1em; width:16px; height:16px; display:inline-block; margin-top:0.1em; cursor:pointer;}
+.minus{ background: url(../../images/img-web/Math-minus-icon.png) top left no-repeat !important; }
+.plus{ background: url(../../images/img-web/Add-icon.png) top left no-repeat !important; }

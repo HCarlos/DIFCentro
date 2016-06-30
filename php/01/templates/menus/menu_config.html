@@ -1,0 +1,136 @@
+                    <li id="subMenuConfig"> 
+                        <a href="#" class="dropdown-toggle">
+                                <i class="icon-cogs"></i>
+                                <span class="menu-text"> Configuraciones </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">                            
+                            
+                            <li>
+                                <a href="#" id="cat_usuarios_list">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text"> Usuarios </span>
+                                </a>
+                            </li>
+                            
+<!--
+                            <li>
+                                <a href="#" id="asoc_user_to_dep">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text"> Usuarios a Dep.</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="asoc_ing_to_ing">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text">Asociar Ingreso</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="config">
+                                    <i class="icon-cog"></i>
+                                    <span class="menu-text"> Parámetros </span>
+                                </a>
+                            </li>
+-->
+                        </ul>
+                    </li>
+<script type="text/javascript">
+jQuery(function($) {
+
+    $("#preloaderPrincipal").show();
+
+    if ($("#asoc_user_to_dep").length) {
+        $("#asoc_user_to_dep").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc.split("@");
+            $.post(obj.getValue(0) + "asoc-user-to-dep-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Asociar Usuarios a Dependencia'));
+                }, "html");
+            return false;
+        });
+    }
+
+    if ($("#cat_usuarios_list").length) {
+        $("#cat_usuarios_list").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "cat-usuarios-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Catálogo de Usuarios'));
+                }, "html");
+            return false;
+        });
+    }
+
+    if ($("#config").length) {
+        $("#config").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "cat-config-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio, Parámetros'));
+                }, "html");
+            return false;
+        });
+    }
+
+    if ($("#asoc_ing_to_ing").length) {
+        $("#asoc_ing_to_ing").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc.split("@");
+            $.post(obj.getValue(0) + "asoc-ing-to-ing-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Asociar Ingreso a Ingreso'));
+                }, "html");
+            return false;
+        });
+    }
+
+
+    $("#subMenuConfig li").on("click", function(event) {
+        event.preventDefault();
+        $(".nav-list li").removeClass("active");
+        if ($('.open').length === null) {
+            $(this).addClass("active open");
+        }
+    });
+
+    function cfgBase0(){
+        resizeScreen();
+        $("#contentLevel3").html("");
+        $("#contentLevel3").hide();
+        $("#contentProfile").html("");
+        $("#contentProfile").hide();
+        $("#contentMain").show("");
+        $("#contentMain").html("");
+        $("#preloaderPrincipal").show();        
+        obj.setIsTimeLine(false);
+    }
+
+    $("#preloaderPrincipal").hide();
+
+
+});    
+</script>

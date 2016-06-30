@@ -1,0 +1,94 @@
+                    <li class="open " id="subMenuCatalogos"> 
+                        <a href="#" class="dropdown-toggle">
+                                <i class="icon-book"></i>
+                                <span class="menu-text"> Opciones </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">                            
+
+                            <li>
+                                <a href="#" id="beneficios_list">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text">Captura de Servicios</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="panel_reportes">
+                                    <i class="icon-print"></i>
+                                    <span class="menu-text">Panel de Reportes</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
+<script type="text/javascript">
+jQuery(function($) {
+
+    $("#preloaderPrincipal").show();
+
+
+
+    if ($("#beneficios_list").length) {
+        $("#beneficios_list").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "cap-beneficios-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Captura de Servicios'));
+                }, "html");
+            return false;
+        });
+    }
+
+    if ($("#panel_reportes").length) {
+        $("#panel_reportes").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "panel-reportes-1/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Panel de Reportes'));
+                }, "html");
+            return false;
+        });
+    }
+
+    $("#subMenuCatalogos li").on("click", function(event) {
+        event.preventDefault();
+        $(".nav-list li").removeClass("active");
+        if ($('.open').length === null) {
+            $(this).addClass("active open");
+        }
+    });
+
+    function cfgBase0(){
+        resizeScreen();
+        $("#contentLevel3").html("");
+        $("#contentLevel3").hide();
+        $("#contentProfile").html("");
+        $("#contentProfile").hide();
+        $("#contentMain").show("");
+        $("#contentMain").html("");
+        $("#preloaderPrincipal").show();        
+        obj.setIsTimeLine(false);
+    }
+
+
+    $("#preloaderPrincipal").hide();
+
+
+})
+
+</script>

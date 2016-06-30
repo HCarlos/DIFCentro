@@ -1,0 +1,125 @@
+RewriteEngine On
+                    
+
+# ## RUTAS PHP DE ENVIO Y RECEPCION DE DATOS
+
+RewriteRule well/ php/01/templates/html/bienvenida.html        
+
+RewriteRule data/ php/01/getDataCat.php [L]        
+RewriteRule getLoginUser/ php/01/templates/login-user.php [L]    
+## RewriteRule setSaveRegistro/ php/01/core/send-Mandrill.php [L]    
+RewriteRule setForgotPassword/ php/01/core/sendMailForgotPassword.php [L]    
+
+RewriteRule profile/ php/01/templates/profile.php [L]        
+RewriteRule profileFoto/ php/01/templates/profile-foto.php [L]        
+RewriteRule profilePWD/ php/01/templates/profile-password.php [L]        
+RewriteRule profileStatic/ php/01/templates/profile-static.php [L]        
+
+RewriteRule session/ php/01/templates/profile-menu-main.php [L]        
+
+RewriteRule fu-tl/ php/01/templates/upload-file-01.php [L]        
+RewriteRule fu-ul/ php/01/templates/upload-file-02.php [L]        
+RewriteRule fu-wl/ php/01/templates/upload-file-03.php [L]        
+RewriteRule fu-xl/ php/01/templates/upload-file-04.php [L]        
+RewriteRule fu-yl/ php/01/templates/upload-file-mensaje.php [L]        
+
+RewriteRule fu-ucf/ php/01/templates/upload-croquis-fachada.php [L]        
+RewriteRule fu-ufp/ php/01/templates/upload-fotos-planos.php [L]        
+
+## ------------------------------------------------------------------------------------------------------
+
+RewriteRule cat-config-list/ php/01/templates/cat_config_list.php [L]   
+RewriteRule cat-config-prop/ php/01/templates/cat_config_prop.php [L]   
+
+RewriteRule cat-beneficios-list/ php/01/templates/cat_beneficios_list.php [L]   
+RewriteRule cat-beneficios-prop/ php/01/templates/cat_beneficios_prop.php [L]   
+
+RewriteRule cat-oficinas-list/ php/01/templates/cat_oficinas_list.php [L]   
+RewriteRule cat-oficinas-prop/ php/01/templates/cat_oficinas_prop.php [L]   
+
+RewriteRule cat-clases-list/ php/01/templates/cat_clases_list.php [L]   
+RewriteRule cat-clases-prop/ php/01/templates/cat_clases_prop.php [L]   
+
+RewriteRule cat-subclases-list/ php/01/templates/cat_subclases_list.php [L]   
+RewriteRule cat-subclases-prop/ php/01/templates/cat_subclases_prop.php [L]   
+
+RewriteRule cat-ingresos-list/ php/01/templates/cat_ingresos_list.php [L]   
+RewriteRule cat-ingresos-prop/ php/01/templates/cat_ingresos_prop.php [L]   
+
+RewriteRule cat-pagos-list/ php/01/templates/cat_pagos_list.php [L]   
+RewriteRule cat-pagos-prop/ php/01/templates/cat_pagos_prop.php [L]   
+
+RewriteRule cat-cobros-list/ php/01/templates/cat_cobros_list.php [L]   
+RewriteRule cat-cobros-prop/ php/01/templates/cat_cobros_prop.php [L]   
+RewriteRule imprimir-recibo-de-pago/ php/01/templates/cat_cobros_cobrar.php [L]   
+RewriteRule ticket-cobro-04/ php/01/docs/recibo-cobro-a.php [L]   
+
+
+RewriteRule cat-supervisor-list/ php/01/templates/cat_supervisor_list.php [L]   
+RewriteRule cat-supervisor-prop/ php/01/templates/cat_supervisor_prop.php [L]   
+
+RewriteRule sendTokenPay/([_0-9a-zA-Z-]+)/ php/01/core/sendTokenForPay.php?token=$1 [L]
+RewriteRule setTokenPay/([_0-9a-zA-Z-]+)/([_0-9a-zA-Z-]+)/ php/01/core/setTokenForPay.php?tokenpay=$1&idtransacpay=$2 [L]
+
+RewriteRule cat-subcategorias-list/ php/01/templates/cat_subcategorias_list.php [L]   
+RewriteRule cat-subcategorias-prop/ php/01/templates/cat_subcategorias_prop.php [L]   
+
+RewriteRule asoc-subcat-beneficio-list/ php/01/templates/asoc_subcat_beneficio.php [L]   
+
+RewriteRule cat-localidades-list/ php/01/templates/cat_localidades_list.php [L]   
+RewriteRule cat-localidades-prop/ php/01/templates/cat_localidades_prop.php [L]   
+
+RewriteRule cap-beneficios-list/ php/01/templates/captura_beneficios_list.php [L]   
+RewriteRule cap-beneficio-prop/ php/01/templates/captura_beneficio_prop.php [L]   
+
+RewriteRule panel-reportes-1/ php/01/templates/panel_reportes_1.php [L]   
+RewriteRule reporte-detalle-html-1/ php/01/templates/reporte_detalles_html_1.php [L]   
+
+RewriteRule dashboard/ principal.php [L]      
+
+## ------------------------------------------------------------------------------------------------------
+
+RewriteRule asoc-user-to-dep-list/ php/01/templates/asoc_user_to_dep.php [L]  
+
+RewriteRule asoc-ing-to-ing-list/ php/01/templates/asoc_ingreso_to_ingreso.php [L]  
+ 
+RewriteRule cat-conceptos-list/ php/01/templates/cat_conceptos_list.php [L]   
+RewriteRule cat-conceptos-prop/ php/01/templates/cat_conceptos_prop.php [L]   
+
+
+
+RewriteRule print-entrega-solicitud-de-material-2/ php/01/templates/sol_panel_reportes_0.php [L]   
+
+##
+## ***************************** M  E  N  U  S *********************************************************
+##
+
+RewriteRule menu-config/ php/01/templates/menus/menu_config.html [L]   
+RewriteRule menu-catalogos/ php/01/templates/menus/menu_catalogos.html [L]   
+RewriteRule menu-cobros/ php/01/templates/menus/menu_cobros.html [L]   
+RewriteRule menu-supervisor/ php/01/templates/menus/menu_supervisor.html [L]   
+RewriteRule menu-caja/ php/01/templates/menus/menu_caja.html [L]   
+RewriteRule menu-opciones/ php/01/templates/menus/menu_opciones.html [L]   
+
+
+##
+## ***************************** C O N T R O L  DE  U  S  U  A  R  I  O  S **************************************
+##
+
+RewriteRule cat-usuarios-list/ php/01/templates/cat_usuarios_list.php [L]   
+RewriteRule cat-usuario-prop/ php/01/templates/cat_usuario_prop.php [L]   
+RewriteRule cat-usuario-change-pwd/ php/01/templates/cat_usuario_change_pwd.php [L]   
+RewriteRule cat-usuario-send-message/ php/01/templates/cat_usuarios_send_message.php [L]   
+
+RewriteRule panel-reports/ php/01/templates/panel_reportes_0.php [L]   
+
+
+
+RewriteRule panel-reportes-siim/ php/01/templates/panel_reportes_siim.php [L]   
+
+
+
+## RewriteCond %{HTTP_HOST} ^www\.platsource\.mx$ [OR]
+## RewriteCond %{HTTP_HOST} ^www\.platsource\.com\.mx$
+
+##GPMpr3s3nt31t

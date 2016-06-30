@@ -1,0 +1,37 @@
+.mybody{
+    background: transparent url("img/blueprint.png") top left repeat !important;
+}
+
+.outer {
+    display: table !important;
+    position: absolute !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.middle {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+.inner {
+    margin-left: auto !important;
+    margin-right: auto !important; 
+    width: 100% !important;
+}
+
+.banner-logo{
+	height: 190px !important; 
+	width: 486px !important; 
+	margin: 0 auto !important;
+	margin-bottom: 16px !important;
+}
+
+.banner-widget{
+    height: 100% !important; 
+    width: 460px !important; 
+    margin: 0 auto !important;
+    margin-bottom: 16px !important;
+}
+
+.banner-logo p{margin-left: 1em !important; margin-bottom: 1em;}

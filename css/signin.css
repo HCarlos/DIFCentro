@@ -1,0 +1,70 @@
+body {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: #eee;
+}
+
+.form-signin, {
+  max-width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control { width: 100%;
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin h2 {
+  line-height: 1em;
+}
+.form-signin input[name="username"] { width: 100%;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[name="password"] { width: 100%;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin input[name="password2"] { width: 100%;
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin input[name="passwordL"] { width: 100%;
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin input[type="submit"], .form-signin input[type="button"] { width: 100%;
+  margin-bottom: -1px;
+}
+
+.form-signin a {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.smallCOREVAT{ position:relative; text-align:left; margin:0px; border:none; padding-bottom:0.4em;
+    color:#000; border-bottom:1px #DDD solid; width:100%; margin-bottom:0.8em;}

@@ -1,0 +1,277 @@
+#uploadImage{cursor:pointer;}
+.divider{width: 100%; height: 2em;}
+.w96{width: 96% !important;}
+.trans-img{
+
+border: 5px #CCC solid;
+-moz-box-shadow:inset 0 0 0.4em #000; 
+-webkit-box-shadow:inset 0 0 0.4em #000; 
+box-shadow:inset 0 0 1em #000;
+-webkit-border-radius: 0.4em;
+-moz-border-radius: 0.4em;
+border-radius: 0.4em;
+}
+.trans-img:hover{
+	
+	/*
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	border: 2px #666 solid;
+      -webkit-transition:border 1s;
+      -moz-transition:border 1s;
+      -ms-transition:border 1s;
+      -o-transition:border 1s;
+      transition:border 1s;	
+      */
+
+	border: 5px #333 solid;
+	border-radius: 0.5em;
+					border-radius: 0.5em !important;
+					-webkit-border-radius: 0.5em !important;
+					-moz-border-radius:0.5em !important;
+					-o-border-radius:0.5em !important;
+					-ms-border-radius:0.5em !important;
+
+-moz-box-shadow:inset 0 0 1em #CCC; 
+-webkit-box-shadow:inset 0 0 1em #CCC; 
+	
+      -webkit-transition:border 0.5s;
+      -moz-transition:border 0.5s;
+      -ms-transition:border 0.5s;
+      -o-transition:border 0.5s;
+      transition:border 0.5s;	
+
+}
+
+#menuOptsMain{
+	list-style: none; margin:0;	
+}
+
+.ajusteliMenuMain
+{
+	text-decoration: none !important;
+}
+
+.imgUserComment
+{
+	cursor:pointer !important;
+}
+
+input[type="file"]#fileElem {
+  /* Note: display:none on the input won't trigger the click event in WebKit.
+     Setting visibility to hidden and width 0 works.*/
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+
+#fileSelect {
+  color: #08233e;
+  font-size: 18pt;
+  padding: 12px;
+  background: -webkit-gradient(linear, left top, left bottom,
+      color-stop(0.5, rgba(255,255,255,0.3)), color-stop(0.5, #ffcc00), to(#ffcc00));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0.3) 50%, #ffcc00 50%, #ffcc00);
+  background: -moz-linear-gradient(top, rgba(255,255,255,0.3) 50%, #ffcc00 50%, #ffcc00);
+  background: -ms-linear-gradient(top, rgba(255,255,255,0.3) 50%, #ffcc00 50%, #ffcc00);
+  background: -o-linear-gradient(top, rgba(255,255,255,0.3) 50%, #ffcc00 50%, #ffcc00);
+  background: linear-gradient(top, rgba(255,255,255,0.3) 50%, #ffcc00 50%, #ffcc00);
+  background-color: #ffcc00;
+  border: 1px solid #ffcc00;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border-bottom: 1px solid #9f9f9f;
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  -o-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  cursor: pointer;
+  text-shadow: 0 1px #fff;
+}
+#fileSelect:hover {
+  background: -webkit-gradient(linear, left top, left bottom,
+                               color-stop(0, #fff), color-stop(0.7, #ffcc00),
+                               to(#ffcc00));
+  background: -webkit-linear-gradient(top, #fff, #ffcc00 70%, #ffcc00);
+  background: -moz-linear-gradient(top, #fff, #ffcc00 70%, #ffcc00);
+  background: -o-linear-gradient(top, #fff, #ffcc00 70%, #ffcc00);
+  background: -ms-linear-gradient(top, #fff, #ffcc00 70%, #ffcc00);
+  background: linear-gradient(top, #fff, #ffcc00 70%, #ffcc00);
+}
+#fileSelect:active {
+  position: relative;
+  top: 2px;
+}
+
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select some files';
+  color: black;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+
+.mrg05em{
+  margin-bottom: 0.5em !important;
+}
+
+.w30{
+  width: 30px !important;
+}
+
+.altoMoz{line-height: 2.1em !important; height: 2.1em !important; padding: 2px !important;}
+.alineaTextoalaDerecha{text-align: right !important;}
+
+.inPorc{line-height: 2.1em !important; height: 2.1em !important; text-align: right !important; width: 4em !important;}
+
+.calif{line-height: 1.2em !important; height: 1.2em !important; text-align: right !important; width: 4em !important; padding: 0px !important; margin: 0px !important; border: none !important; }
+.colclick{margin-left: 100% !important; padding: 0.1em 0.2em !important;}
+
+.cajaContainer{position:relative !important; width: auto !important; height: auto !important; vertical-align: top !important;}
+.fieldset3{position: relative !important; margin-top: 2em;}
+.textRight{text-align: right !important; margin-right: 1em !important;}
+.ui-icon2:hover{
+  display:inline-block;
+  float:none;
+  position:static;
+  text-align:center;
+  opacity:.85;
+  -webkit-transition:all .12s;
+  transition:all .12s;margin:0 1px;
+  vertical-align:middle;
+  cursor:pointer;
+  font-size:1.1em;
+}
+.wd10prc{width: 10% !important;}
+.wd30prc{width: 30% !important;}
+.wd33prc{width: 33% !important;}
+.wd40prc{width: 40% !important;}
+.wd60prc{width: 60% !important;}
+.wd62prc{width: 62% !important;}
+.wd64prc{width: 64% !important;}
+.wd70prc{width: 70% !important;}
+.wd72prc{width: 72% !important;}
+.wd74prc{width: 74% !important;}
+.wd75prc{width: 75% !important;}
+.wd76prc{width: 76% !important;}
+.wd78prc{width: 78% !important;}
+.wd80prc{width: 80% !important;}
+.wd82prc{width: 82% !important;}
+.wd84prc{width: 84% !important;}
+.wd86prc{width: 86% !important;}
+.wd88prc{width: 88% !important;}
+.wd90prc{width: 90% !important;}
+.wd92prc{width: 92% !important;}
+.wd94prc{width: 94% !important;}
+.wd95prc{width: 95% !important;}
+.wd966prc{width: 96% !important;}
+.wd98prc{width: 98% !important;}
+.wd96prc{width: 100% !important;}
+.wd50prc{width: 50% !important;}
+.wd100prc{width: 100% !important;}
+
+.containerBoxItem{position:relative !important; display: inline-block; width: auto !important; height: auto !important; vertical-align: top !important;}
+.select5em{width: 5em !important;}
+.select10em{width: 10em !important;}
+.firstElement{position:relative; display: inline-block, vertical-align:first-child;}
+.lastElement{position:relative; display: inline-block, vertical-align:last-child;}
+.marginLeft1em{margin-left: 1em !important;}
+.marginTop1em{margin-top: 1em !important;}
+.marginLeft2em{margin-left: 2em !important;}
+
+.transparent{
+  background: transparent !important;
+}
+
+
+.colorcal{background-color:#B6D7B9; color:#142A13; font-weight: bold !important; }
+.colorreprobado{background-color:#E1A6A6;}
+.colorexcelente{background-color:#9CE89C;}
+
+.colorpagado{background-color:#F9DFDF;}
+
+/* Footer
+================================================== */
+
+#dgtic-footer {
+    background: #fff;
+    border-top: 1px solid #d0d0d0;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#dgtic-footer p {
+    margin: 0;
+}
+
+.borderTopContainer{display: block; margin-top: 1em;}
+
+.btnClose{margin-top: 0.8em !important; margin-right: 1em !important;}
+
+input:focus{-webkit-border-radius: 0.25em !important;
+    -moz-border-radius: 0.25em !important;
+    border-radius: 0.25em !important;
+    
+    /* outer shadows  (note the rgba is red, green, blue, alpha) */
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+    -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+    
+    /* rounded corners */
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 7px; 
+    border-radius: 7px;
+    
+    /* gradients */ 
+    background: -webkit-linear-gradient(white 0%, white 55%, #D5E4F3 130%);
+    background: -o-linear-gradient(white 0%, white 55%, #D5E4F3 130%);
+    background: linear-gradient(white 0%, white 55%, #D5E4F3 130%); 
+    
+    
+}
+
+
+.separatorSpan{
+    display: inline-block; 
+    height: 0.75em; 
+    width: 1em;
+}
+
+.margen0{margin: 0 !important;}
+
+.lbl00{ margin-top: 0.5em !important;}
+
+.cafe {
+  color:#874A2A !important;
+}
