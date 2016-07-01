@@ -13,6 +13,6 @@ git add .
 
 git commit -m "DIFCentro Update 1"
 
-git push -u origin master --force-with-lease
+git push -u origin master --force
 
 exit
