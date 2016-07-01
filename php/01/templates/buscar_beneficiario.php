@@ -7,18 +7,18 @@ include("includes/metas.php");
 <div class="span12" style="padding-left: 1em; padding-right: 1em;">
 <div class="tabbable">
 
-	<h3 class="header smaller lighter blue" id="title">Buscar Familia</h3>
-	<form id="frmData" role="form">
+	<h3 class="header smaller lighter blue" id="title">Buscar Beneficiario</h3>
+	<form id="frmFindBen" role="form">
 
 		<div class="tab-content">
 
-			<input class="input-large form-control altoMoz wd60prc show" id="search" name="search" type="text" placeholder="Familia" autofocus>
+			<input class="input-large form-control altoMoz wd60prc show" id="search" name="search" type="text" placeholder="Beneficiario" autofocus>
 
 		</div>
 
 	    <input type="hidden" name="idfamilia" id="idfamilia" value="0">
 	    <div class="form-group w96" style='margin-right: 3em; margin-top: 1em;'>
-	    	<button type="button" class="btn btn-default pull-right" data-dismiss="modal" id="closeFormUpload"><i class="icon-signout"></i>Cerrar</button>
+	    	<button type="button" class="btn btn-default pull-right" data-dismiss="modal" id="closeFrmFindBen"><i class="icon-signout"></i>Cerrar</button>
 	    	<span class="muted"></span>
 	    	<button type="submit" class="btn btn-primary pull-right" style='margin-right: 4em;'><i class="icon-ok"></i>Aceptar</button>
 		</div>
@@ -41,27 +41,27 @@ jQuery(function($) {
 	var stream = io.connect(obj.getValue(4));
 
 
-	var IdFamilia = 0;
-	var cFamilia = "";
+	var IdBeneficiario = 0;
+	var cBeneficiario = "";
 	var data = [];
 
 	$("#preloaderPrincipal").show();
 
 	$("#search").focus();
 
-    $("#frmData").unbind("submit");
-	$("#frmData").on("submit",function(event){
+    $("#frmFindBen").unbind("submit");
+	$("#frmFindBen").on("submit",function(event){
 		event.preventDefault();
 
 		$("#preloaderPrincipal").show();
 
 		    var queryString = $(this).serialize();	
 		    
-			stream.emit("cliente", {mensaje: "SIBDMUN|IDBENEFICIARIO|"+IdFamilia+"|"+cFamilia+"|"+localStorage.nc});
+			stream.emit("cliente", {mensaje: "SIBDMUN|FINDBEN|"+IdBeneficiario+"|"+cBeneficiario+"|"+localStorage.nc});
 			$("#preloaderPrincipal").hide();
-			$("#contentProfile").hide(function(){
-				$("#contentProfile").empty();
-				$("#contentMain").show();
+			$("#contentLevel3").hide(function(){
+				$("#contentLevel3").empty();
+				$("#contentProfile").show();
 			});
 
 	});
@@ -87,17 +87,15 @@ jQuery(function($) {
     function getPersonas(){
         var nc = "u="+localStorage.nc;
         $.ajax({ url: obj.getValue(0)+"data/",
-            data: { o:1, t:29, p:0,c:nc,from:0,cantidad:0, s:" order by label asc " },
+            data: { o:1, t:312, p:0,c:nc,from:0,cantidad:0, s:" order by label asc " },
             dataType: "json",
             type: "POST",
             success: function(json){
                $.each(json, function(i, item) {
-                    //$("#idpersona").append('<option value="'+item.data+'"> '+item.label+'</option>');
                     if ( item.label == null ){
                         console.log(item.label);
                 	}else{
-                        //console.log(item.label);
-                    	data[i]={ label: item.data+ ' - '+item.label+ ' - '+item.tutor , category: "Familia", indice: item.data, tutor: item.tutor };
+                    	data[i]={ label: item.data+ ' - '+item.label+ ' - '+item.localidad , category: "Beneficiario", indice: item.data, localidad: item.localidad };
                 	};
                 });
 				$( "#search" ).catcomplete({
@@ -106,8 +104,8 @@ jQuery(function($) {
 					autoFocus: true,
 					select: function(event, ui) { 
 						if (ui.item){
-							cFamilia = ui.item.value;
-							IdFamilia = ui.item.indice;
+							cBeneficiario = ui.item.value;
+							IdBeneficiario = ui.item.indice;
 			        	}
 			      	},
 					open: function() {
@@ -126,20 +124,16 @@ jQuery(function($) {
 	
 	}
 
-	$("#closeFormUpload").on("click",function(event){
+	$("#closeFrmFindBen").on("click",function(event){
 		event.preventDefault();
 		$("#preloaderPrincipal").hide();
-		$("#contentProfile").hide(function(){
-			$("#contentProfile").empty();
-			$("#contentMain").show();
+		$("#contentLevel3").hide(function(){
+			$("#contentLevel3").empty();
+			$("#contentProfile").show();
 		});
-		resizeScreen();
-		return false;
 	});
 
     getPersonas();
-
-    // alert("Hola Mundo");
 
 });
 

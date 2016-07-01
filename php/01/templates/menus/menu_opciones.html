@@ -16,6 +16,13 @@
                             </li>
 
                             <li>
+                                <a href="#" id="beneficiarios_list">
+                                    <i class="icon-edit"></i>
+                                    <span class="menu-text">Beneficiarios</span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="#" id="panel_reportes">
                                     <i class="icon-print"></i>
                                     <span class="menu-text">Panel de Reportes</span>
@@ -32,6 +39,22 @@ jQuery(function($) {
     $("#preloaderPrincipal").show();
 
 
+
+    if ($("#beneficiarios_list").length) {
+        $("#beneficiarios_list").on("click", function(event) {
+            event.preventDefault();
+            cfgBase0();
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "cat-beneficiarios-list/", {
+                    user: nc
+                },
+                function(html) {
+                    $("#contentMain").html(html);
+                    $('#breadcrumb').html(getBar('Inicio,Catálogo de Beneficiarios'));
+                }, "html");
+            return false;
+        });
+    }
 
     if ($("#beneficios_list").length) {
         $("#beneficios_list").on("click", function(event) {

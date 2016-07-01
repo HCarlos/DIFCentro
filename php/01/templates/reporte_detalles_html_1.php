@@ -33,16 +33,34 @@ $rs = $f->getQuerys(2022,$data);
 		<div class="widget-header widget-hea1der-small header-color-default">
 			
 			<div class="widget-toolbar border pull-right">
+
 			    <button  type="button" class="btn btn-minier btn-primary arrowed-in-right arrowed closeWinRep01 " style="margin: 0 1em !important;" >
 			        <i class="icon-angle-left icon-on-right"></i>
 			        Regresar
 			    </button>
+
 			</div>
+
+			<div class="widget-toolbar border pull-right">
+
+				<button data-toggle="dropdown" class="btn btn-minier btn-success arrowed-in-right arrowed dropdown-toggle">
+					<i class="white icon-print bigger-110"></i>												Imprimir
+					<span class="caret"></span>
+				</button>
+
+				<ul class="dropdown-menu dropdown-success">
+					<li>
+						<a href="#" id="printFormato1">Formato 1</a>
+					</li>
+				</ul>
+
+			</div>
+
 
 			<div class="widget-toolbar orange pull-left no-border ">
 				<h3 class="grey lighter  pull-left position-relative wd100prc">
 					<i class="icon-print green"></i>
-					LISTADO DE BENEFICIARIOS
+					LISTA DE BENEFICIARIOS
 				</h3>
 			</div>
 
@@ -56,13 +74,13 @@ $rs = $f->getQuerys(2022,$data);
 										
 						<thead>
 							<tr role="row">
-								<th aria-label="idedocta: activate to sort column ascending" style="width: 50px;" aria-controls="sample-table-2" tabindex="0" role="columnheader" class="sorting" >ID</th>
-								<th aria-label="pdf: activate to sort column ascending" style="width: 100px;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">BENEFICIO</th>
-								<th aria-label="xml: activate to sort column ascending" style="width: 100px;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">SUBCATEGORIA</th>
-								<th aria-label="concepto: activate to sort column ascending" style="width: 100px;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">BENEFICIARIO</th>
-								<th aria-label="idfamilia: activate to sort column ascending" style="width: 100px;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">LOCALIDAD</th>
-								<th aria-label="familia: activate to sort column ascending" style="width: 100px;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">CANTIDAD</th>
-								<th aria-label="fecha: activate to sort column ascending" style="width: 100px;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">FECHA</th>
+								<th aria-label="idedocta: activate to sort column ascending" style="width: 2%;" aria-controls="sample-table-2" tabindex="0" role="columnheader" class="sorting center" >ID</th>
+								<th aria-label="pdf: activate to sort column ascending" style="width: 22.5%;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">BLOQUES</th>
+								<th aria-label="xml: activate to sort column ascending" style="width: 22.5%;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">SERVICIOS</th>
+								<th aria-label="concepto: activate to sort column ascending" style="width: 22.5%;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">BENEFICIARIO</th>
+								<th aria-label="idfamilia: activate to sort column ascending" style="width: 22.5%;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">LOCALIDAD</th>
+								<th aria-label="familia: activate to sort column ascending" style="width: 3%;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting center">CNT</th>
+								<th aria-label="fecha: activate to sort column ascending" style="width: 5%;" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting center">FECHA</th>
 							</tr>
 						</thead>
 										
@@ -72,13 +90,13 @@ $rs = $f->getQuerys(2022,$data);
 									foreach ($rs as $i => $value) {
 							?>
 							<tr>
-								<td><?= $rs[$i]->idbeneficiootorgado; ?></td>
+								<td class="center"><?= str_pad($rs[$i]->idbeneficiootorgado,4,"0",STR_PAD_LEFT); ?></td>
 								<td><?= $rs[$i]->beneficio; ?></td>
 								<td><?= $rs[$i]->subcategoria; ?></td>
 								<td><?= $rs[$i]->beneficiario; ?></td>
 								<td><?= $rs[$i]->localidad; ?></td>
-								<td><?= $rs[$i]->cantidad; ?></td>
-								<td><?= $rs[$i]->fecha; ?></td>
+								<td class="center"><?= $rs[$i]->cantidad; ?></td>
+								<td class="center"><?= $rs[$i]->fecha; ?></td>
 							</tr>	
 							<?php 
 										}

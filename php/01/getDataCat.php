@@ -95,6 +95,7 @@ switch($index){
 	case 1006: // Subcategorias
 	case 1007: // Localidades
 	case 1008: // Beneficios Otorgados
+	case 1009: // Catálogo de Beneficiarios
 
 		switch($proc){
 			case 0:

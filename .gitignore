@@ -1,1 +1,16 @@
-
+*.iml
+.gradle
+.idea
+/.idea
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/gradle
+/captures
+/.git
+mygit_0.sh
+mygit_1.sh
+sftp-config.json
+/upload

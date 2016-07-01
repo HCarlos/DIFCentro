@@ -259,31 +259,48 @@ Left Join cat_delegaciones del
 Left Join cat_categorias_localidades ccl
 	On loc.idcategorialocalidad = ccl.idcategorialocalidad
 
-Create or Replace View _vi_Beneficios_Otorgados	As 
+
+Create or Replace View _vi_Beneficiarios As 
 Select 
-	bo.idbeneficiootorgado, 
-	bo.ap_paterno,
-	bo.ap_materno,
-	bo.nombre,
-	concat(bo.ap_paterno,' ',bo.ap_materno,' ',bo.nombre) as beneficiario, 
-	bo.sexo,
-	bo.telefono, 
-	bo.correo_electronico, 
-	bo.idsubcatben, 
-	sb.beneficio,
-	sb.subcategoria,
-	bo.cantidad,
-	bo.idlocalidad, 
+	ben.idbeneficiario, 
+	ben.ap_paterno, 
+	ben.ap_materno, 
+	ben.nombre, 
+	concat(ben.ap_paterno,' ',ben.ap_materno,' ',ben.nombre) as beneficiario, 
+	ben.telefono, 
+	ben.correo_electronico, 
+	ben.sexo, 
+	ben.idlocalidad, 
 	l.delegacion,
 	l.categoria,
 	l.localidad,
+	ben.status_beneficiario, 
+	ben.idemp
+From cat_beneficiarios ben
+Left Join _vi_Localidades l 
+	On ben.idlocalidad = l.idlocalidad
+
+Create or Replace View _vi_Beneficios_Otorgados	As 
+Select 
+	bo.idbeneficiootorgado, 
+	bo.idbeneficiario, 
+	ben.beneficiario,
+	ben.delegacion,
+	ben.categoria,
+	ben.idlocalidad,
+	ben.localidad,
+	bo.idsubcatben, 
+	sb.idbeneficio,
+	sb.beneficio,
+	sb.subcategoria,
+	bo.cantidad,
 	DATE_FORMAT(bo.fecha,"%d-%m-%Y") as fecha, 
 	bo.observaciones, 
 	bo.status_beneficio_otorgado, 
 	bo.idemp
 From beneficios_otorgados bo	
+Left Join _vi_Beneficiarios ben 
+	On bo.idbeneficiario = ben.idbeneficiario
 Left Join _vi_SubCat_Ben sb 
 	On bo.idsubcatben = sb.idsubcatben
-Left Join _vi_Localidades l 
-	On bo.idlocalidad = l.idlocalidad
 

@@ -75,6 +75,10 @@ RewriteRule cap-beneficio-prop/ php/01/templates/captura_beneficio_prop.php [L]
 RewriteRule panel-reportes-1/ php/01/templates/panel_reportes_1.php [L]   
 RewriteRule reporte-detalle-html-1/ php/01/templates/reporte_detalles_html_1.php [L]   
 
+RewriteRule cat-beneficiarios-list/ php/01/templates/cat_beneficiarios_list.php [L]   
+RewriteRule cat-beneficiario-prop/ php/01/templates/cat_beneficiario_prop.php [L]   
+RewriteRule find-beneficiario/ php/01/templates/buscar_beneficiario.php [L]   
+
 RewriteRule dashboard/ principal.php [L]      
 
 ## ------------------------------------------------------------------------------------------------------

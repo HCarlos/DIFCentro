@@ -46,13 +46,10 @@ $de       = $_POST['user'];
 									
 					<thead>
 						<tr role="row">
-							<th aria-label="idbeneficiootorgado: activate to sort column ascending" style="width: 5%;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="0" role="columnheader" class="sorting" >ID</th>
-							<th aria-label="nombre_completo: activate to sort column ascending" style="width: 25%;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">BENEFICIARIO</th>
-							<th aria-label="localidad: activate to sort column ascending" style="width: 23%;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="2" role="columnheader" class="sorting">LOCALIDAD</th>
-							<th aria-label="beneficio: activate to sort column ascending" style="width: 20%;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="3" role="columnheader" class="sorting">SERVICIO</th>
-							<th aria-label="cantidad: activate to sort column ascending" style="width: 7%;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="3" role="columnheader" class="sorting">CNT</th>
-							<th aria-label="fecha: activate to sort column ascending" style="width: 10%;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="3" role="columnheader" class="sorting">FECHA</th>
-							<th colspan="1" rowspan="1" role="columnheader" class="sorting_disabled" style="width: 15%;"></th>
+							<th aria-label="idbeneficiario: activate to sort column ascending" style="width: 30px;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="0" role="columnheader" class="sorting" >ID</th>
+							<th aria-label="nombre_completo: activate to sort column ascending" style="width: 200px;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="1" role="columnheader" class="sorting">BENEFICIARIO</th>
+							<th aria-label="localidad: activate to sort column ascending" style="width: 200px;" colspan="1" rowspan="1" aria-controls="sample-table-2" tabindex="2" role="columnheader" class="sorting">LOCALIDAD</th>
+							<th aria-label="" style="width: 100px;" colspan="1" rowspan="1" role="columnheader" class="sorting_disabled"></th>
 						</tr>
 					</thead>
 									
@@ -93,7 +90,7 @@ jQuery(function($) {
 	            			"sInfoFiltered": "(De _MAX_ registros)"                                        
 	        			},	
 	        "aaSorting": [[ 1, "asc" ]],			
-			"aoColumns": [ null, null, null, null, null, null, { "bSortable": false }],
+			"aoColumns": [ null, null, null, { "bSortable": false }],
 			"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
 			"bRetrieve": true,
 			"bDestroy": false
@@ -106,7 +103,7 @@ jQuery(function($) {
 
 		$("#preloaderPrincipal").show();
 		var nc = "u="+localStorage.nc;
-		$.post(obj.getValue(0) + "data/", {o:1008, t:2020, c:nc, p:10, from:0, cantidad:0,s:''},
+		$.post(obj.getValue(0) + "data/", {o:1009, t:2023, c:nc, p:10, from:0, cantidad:0,s:''},
 			function(json){
 				
 					$.each(json, function(i, item) {
@@ -114,22 +111,18 @@ jQuery(function($) {
 						tB +=' 			<tr class="odd">';
 						tB +='';
 						tB +='				<td>';
-						tB +='					<a href="#" >'+padl(item.idbeneficiootorgado,4)+'</a>';
+						tB +='					<a href="#" >'+padl(item.idbeneficiario,4)+'</a>';
 						tB +='				</td>';
 						tB +='				<td>'+item.beneficiario+'</td>';
-						tB +='				<td>'+item.localidad+'</td>';
-						tB +='				<td>'+item.subcategoria+'</td>';
-						tB +='				<td class="center">'+item.cantidad+'</td>';
-						tB +='				<td class="center">'+item.fecha+'</td>';
+						tB +='				<td>'+item.localidad+', '+item.delegacion+'</td>';
 						tB +='				<td>';
-						// tB +='					<div class="hidden-phone visible-desktop action-buttons">';
-						tB +='					<div class="visible-phone visible-desktop action-buttons">';
+						tB +='					<div class="hidden-phone visible-desktop action-buttons">';
 						tB +='';
-						tB +='						<a class="green modBenOtoPro" href="#" id="idbeneficiootorgado-'+item.idbeneficiootorgado+'" >';
+						tB +='						<a class="green modBenOtoPro" href="#" id="idbeneficiario-'+item.idbeneficiario+'" >';
 						tB +='							<i class="icon-pencil bigger-130"></i>';
 						tB +='						</a>';
 						tB +='	';
-						tB +='						<a class="red delBenOto" href="#"  id="delBenOto-'+item.idbeneficiootorgado+'" >';
+						tB +='						<a class="red delBenOto" href="#"  id="delBenOto-'+item.idbeneficiario+'" >';
 						tB +='							<i class="icon-trash bigger-130"></i>';
 						tB +='						</a>';
 						tB +='					</div>';
@@ -159,7 +152,7 @@ jQuery(function($) {
 						if (resp){
 							//alert(arr[1]);
 							obj.setIsTimeLine(false);
-				            $.post(obj.getValue(0) + "data/", {o:1008, t:2, c:arr[1], p:2, from:0, cantidad:0, s:''},
+				            $.post(obj.getValue(0) + "data/", {o:1009, t:2, c:arr[1], p:2, from:0, cantidad:0, s:''},
 				            function(json) {
 				            		if (json[0].msg=="OK"){
 										onClickFillTable();
@@ -212,19 +205,19 @@ jQuery(function($) {
 
 	})
 
-	function getPropBenOto(IdBenOto){
+	function getPropBenOto(IdBeneficiario){
         $("#contentProfile").empty();
         $("#contentMain").hide(function(){
 	        $("#preloaderPrincipal").show();
 	        obj.setIsTimeLine(false);
 	        var nc = localStorage.nc;
-			$.post(obj.getValue(0) + "cap-beneficio-prop/", {
+			$.post(obj.getValue(0) + "cat-beneficiario-prop/", {
 					user: nc,
-					idbeneficiootorgado: IdBenOto
+					idbeneficiario: IdBeneficiario
 				},
 	            function(html) {	                
 	                $("#contentProfile").html(html).show('slow',function(){
-		                $('#breadcrumb').html(getBar('Inicio, Captura de Servicios'));
+		                $('#breadcrumb').html(getBar('Inicio, Catálogo de Beneficiarios'));
 	                });
 	            }, "html");
         });
@@ -237,7 +230,7 @@ jQuery(function($) {
 		var ms = datosServer.mensaje.split("-");
 		//alert(datosServer);
 		//obj.setIsTimeLine(true);
-		if (ms[1]=='BENEFICIO_OTORGADO') {
+		if (ms[1]=='BENEFICIARIO') {
 			onClickFillTable();
 		}
 	}

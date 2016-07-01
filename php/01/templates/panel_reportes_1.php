@@ -26,8 +26,8 @@ include("includes/metas.php");
 									<select id="tiporeporte" name="tiporeporte">
 										<option value="0" selected>Por rango de fechas</option>
 										<option value="1">Fechas, Comunidad</option>
-										<option value="2">Fechas, Comunidad, Beneficios Golobales</option>
-										<option value="3">Fecha, Comunidad, Subcategorías</option>
+										<option value="2">Fechas, Comunidad, Bloque</option>
+										<option value="3">Fecha, Comunidad, Servicio</option>
 									</select>							
 								</td>
 							</tr>
@@ -55,16 +55,16 @@ include("includes/metas.php");
 								</td>
 							</tr>
 							<tr>
-								<td><label for="idbeneficio">Beneficios G.:</label></td>
+								<td><label for="idbeneficio">Bloques</label></td>
 								<td colspan="3">
 									<select id="idbeneficio" name="idbeneficio">
 									</select>							
 								</td>
 							</tr>
 							<tr>
-								<td><label for="idsubcategoria">Subcategoría:</label></td>
+								<td><label for="idsubcatben">Servicio</label></td>
 								<td colspan="3">
-									<select id="idsubcategoria" name="idsubcategoria">
+									<select id="idsubcatben" name="idsubcatben">
 									</select>							
 								</td>
 							</tr>
@@ -78,7 +78,7 @@ include("includes/metas.php");
 
 						<input type="hidden" id="u" name="u" />
 						<input type="hidden" id="cidbeneficio" name="cidbeneficio" value="" />
-						<input type="hidden" id="cidsubcategoria" name="cidsubcategoria" value="" />
+						<input type="hidden" id="cidsubcatben" name="cidsubcatben" value="" />
 						<input type="hidden" id="cconceptos" name="cconceptos" value="" />
 						<input type="hidden" id="concepto" name="concepto" value="" />
 
@@ -124,7 +124,7 @@ jQuery(function($) {
         $("#cconceptos").val( $("#conceptos option:selected").text() );
         $("#ctipobeca").val( $("#tipoBeca option:selected").text() );
         $("#cidbeneficio").val( $("#idbeneficio option:selected").text() );
-        $("#cidsubcategoria").val( $("#idsubcategoria option:selected").text() );
+        $("#cidsubcatben").val( $("#idsubcatben option:selected").text() );
         $("#concepto").val( $("#idlocalidad option:selected").text() );
 
         queryString = $("#frmPanelRep1").serialize();
@@ -256,10 +256,10 @@ jQuery(function($) {
 
 	function getSubcategorias(){
 	    var nc = "u="+localStorage.nc;
-	    $.post(obj.getValue(0)+"data/", { o:1, t:1, p:10, c:nc, from:0, cantidad:0, s:"" },
+	    $.post(obj.getValue(0)+"data/", { o:1, t:2, p:10, c:nc, from:0, cantidad:0, s:"" },
 	        function(json){
 	           $.each(json, function(i, item) {
-	                $("#idsubcategoria").append('<option value="'+item.idsubcategoria+'">'+item.subcategoria+'</option>');
+	                $("#idsubcatben").append('<option value="'+item.idsubcatben+'">'+item.subcategoria+'</option>');
 	            });
 
 	        }, "json"

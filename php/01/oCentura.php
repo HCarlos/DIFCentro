@@ -321,6 +321,23 @@ class oCentura {
 										Order By localidad asc ";
 								break;	
 
+							case 311:
+								parse_str($arg);
+								$idemp = $this->getIdEmpFromAlias($u);
+								$query = "SELECT beneficiario as label, idbeneficiario as data 
+										FROM _vi_Beneficiarios  
+										Order By beneficiario asc ";
+								break;	
+
+							case 312:
+								parse_str($arg);
+								$idemp = $this->getIdEmpFromAlias($u);
+								$query = "SELECT distinct beneficiario as label, idbeneficiario as data, localidad 
+										FROM _vi_Beneficiarios 
+										where idemp = $idemp and status_beneficiario = 1 and beneficiario != 'null'
+										Order By beneficiario asc ";
+								break;	
+
 
 
 						}
@@ -1149,26 +1166,14 @@ class oCentura {
 								$fec = explode("-",$fecha);
 								$fecha = $fec[2].'-'.$fec[1].'-'.$fec[0];
 								$query = "Insert Into beneficios_otorgados(
-																	ap_paterno,
-																	ap_materno,
-																	nombre,
-																	sexo,
-																	telefono,
-																	correo_electronico,
 																	idsubcatben,
-																	idlocalidad,
+																	idbeneficiario,
 																	cantidad,
 																	fecha,
 																	idemp,ip,host,creado_por,creado_el)
 											value(
-													'$ap_paterno',
-													'$ap_materno',
-													'$nombre',
-													$sexo,
-													'$telefono',
-													'$correo_electronico',
 													$idsubcatben,
-													$idlocalidad,
+													$idbeneficiario,
 													$cantidad,
 													'$fecha',
 												  '$idemp','$ip','$host',$idusr,NOW())";
@@ -1182,15 +1187,9 @@ class oCentura {
 								$fec = explode("-",$fecha);
 								$fecha = $fec[2].'-'.$fec[1].'-'.$fec[0];
 								$query = "update beneficios_otorgados set 	
-															  	ap_paterno = '$ap_paterno',
-															  	ap_materno = '$ap_materno',
-															  	nombre = '$nombre',
-															  	sexo = $sexo,
-															  	telefono = '$telefono',
-															  	correo_electronico = '$correo_electronico',
 															  	fecha = '$fecha',
 															  	idsubcatben = $idsubcatben,
-															  	idlocalidad = $idlocalidad,
+															  	idbeneficiario = $idbeneficiario,
 															  	cantidad = $cantidad,
 																ip = '$ip', 
 																host = '$host',
@@ -1209,6 +1208,62 @@ class oCentura {
 						break; // 1008
 
 
+					case 1009: 
+						switch($tipo){
+							case 0:
+								parse_str($arg);
+								$idusr = $this->getIdUserFromAlias($user);
+								$idemp = $this->getIdEmpFromAlias($user);
+								$query = "Insert Into cat_beneficiarios(
+																	ap_paterno,
+																	ap_materno,
+																	nombre,
+																	sexo,
+																	telefono,
+																	correo_electronico,
+																	idlocalidad,
+																	idemp,ip,host,creado_por,creado_el)
+											value(
+													'$ap_paterno',
+													'$ap_materno',
+													'$nombre',
+													$sexo,
+													'$telefono',
+													'$correo_electronico',
+													$idlocalidad,
+												  '$idemp','$ip','$host',$idusr,NOW())";
+								$result = mysql_query($query); 
+								$vRet = $result!=1? mysql_error():"OK";
+								break;		
+							case 1:
+							     //$ar = $this->unserialice_force($arg);
+								parse_str($arg);
+								$idusr = $this->getIdUserFromAlias($user);
+								$fec = explode("-",$fecha);
+								$fecha = $fec[2].'-'.$fec[1].'-'.$fec[0];
+								$query = "update cat_beneficiarios set 	
+															  	ap_paterno = '$ap_paterno',
+															  	ap_materno = '$ap_materno',
+															  	nombre = '$nombre',
+															  	sexo = $sexo,
+															  	telefono = '$telefono',
+															  	correo_electronico = '$correo_electronico',
+															  	idlocalidad = $idlocalidad,
+																ip = '$ip', 
+																host = '$host',
+																modi_por = $idusr, 
+																modi_el = NOW()
+										Where idbeneficiario = $idbeneficiario";
+								$result = mysql_query($query);
+								$vRet = $result!=1? mysql_error():"OK";
+								break;		
+							case 2:
+								$query = "delete from cat_beneficiarios Where idbeneficiario = ".$arg;
+								$result = mysql_query($query);
+								$vRet = $result!=1? mysql_error():"OK";
+								break;		
+						}
+						break; // 1009
 
 		  		}
 		  
@@ -1288,6 +1343,17 @@ class oCentura {
 					$query = "SELECT *
 								FROM cat_subcategorias 
 								WHERE  idemp = $idemp and status_subcategoria = 1  
+								Order by subcategoria asc";
+					break;
+
+				case 2:
+					parse_str($cad);
+					$iduser = $this->getIdUserFromAlias($u);
+			        $idemp = $this->getIdEmpFromAlias($u);
+					
+					$query = "SELECT *
+								FROM _vi_SubCat_Ben 
+								WHERE  idemp = $idemp and status_subcat_ben = 1  
 								Order by subcategoria asc";
 					break;
 
@@ -1448,7 +1514,9 @@ class oCentura {
 				case 2020:
 					parse_str($cad);
 			        $idemp = $this->getIdEmpFromAlias($u);
-					$query = "SELECT idbeneficiootorgado, beneficiario, localidad, subcategoria, fecha
+					$query = "SELECT idbeneficiootorgado, beneficiario, 
+									  CONCAT(delegacion,' ',localidad) as localidad, 
+									  subcategoria, cantidad, fecha
 									FROM _vi_Beneficios_Otorgados
 								order by beneficiario asc";
 					break;
@@ -1464,13 +1532,6 @@ class oCentura {
 			        $idemp = $this->getIdEmpFromAlias($u);
 			        $tr = intval($tiporeporte);
 
-			        /*
-			        $f0 = explode("-",$fi);
-			        $fi = $f0[2].'-'.$f0[1].'-'.$f0[0];
-			        $f1 = explode("-",$ff);
-			        $ff = $f1[2].'-'.$f1[1].'-'.$f1[0];
-					*/
-				
 			        $where = "";
 			        switch ($tr) {
 			        	case 0:
@@ -1494,6 +1555,21 @@ class oCentura {
 									FROM _vi_Beneficios_Otorgados
 							 ".$where;
 					break;
+
+				case 2023:
+					parse_str($cad);
+			        $idemp = $this->getIdEmpFromAlias($u);
+					$query = "SELECT idbeneficiario, beneficiario, localidad, delegacion
+									FROM _vi_Beneficiarios
+								order by beneficiario asc";
+					break;
+					
+				case 2024:
+					$query = "SELECT *
+									FROM _vi_Beneficiarios
+								where idbeneficiario = $cad ";
+					break;
+
 
 				}
 

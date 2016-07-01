@@ -30,58 +30,22 @@ $idbeneficiootorgado  = $_POST['idbeneficiootorgado'];
                 <table>
 
                     <tr>
-                        <td><label for="ap_paterno" class="textRight">Ap. Paterno</label></td>
+                        <td><label for="idbeneficiario" class="textRight">Beneficiario</label></td>
                         <td>
                             <span class="add-on"><i class="icon-asterisk red"></i></span>
-                            <input class="altoMoz" name="ap_paterno" id="ap_paterno" type="text" required >
-                        </td>
-                        <td colspan="4"></td>
-                    </tr>
+                            
+                            <!-- 
+                            <select name="idbeneficiario" id="idbeneficiario" size="1" style="width:75% !important;" > 
+                            </select> 
+                            -->
 
-                    <tr>
-                        <td><label for="ap_materno" class="textRight">Ap. Materno</label></td>
-                        <td>
-                            <span class="add-on"><i class="icon-asterisk red"></i></span>
-                            <input class="altoMoz" name="ap_materno" id="ap_materno" type="text" required >
-                        </td>
-                        <td colspan="4"></td>
-                    </tr>
+                            <input class="altoMoz" name="beneficiario" id="beneficiario" type="text" value="" style="width:75% !important;" disabled required >
 
-                    <tr>
-                        <td><label for="nombre" class="textRight">Nombre</label></td>
-                        <td>
-                            <span class="add-on"><i class="icon-asterisk red"></i></span>
-                            <input class="altoMoz" name="nombre" id="nombre" type="text" required >
-                                <label class="textLeft">Sexo</label>
-                                    <span>
-                                      <input type="radio" name="sexo" id="inlineRadio1" value="0" > Indefinido
-                                    </span>
-                                    <span>
-                                      <input type="radio" name="sexo" id="inlineRadio2" value="1"> Hombre
-                                    </span>
-                                    <span>
-                                      <input type="radio" name="sexo" id="inlineRadio3" value="2"> Mujer
-                                    </span>
-                         </td>
-                        <td colspan="4">
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td><label for="telefono" class="textRight">Teléfono</label></td>
-                        <td>
-                            <span class="add-on"><i class="icon-asterisk white"></i></span>
-                            <input class="altoMoz" name="telefono" id="telefono" type="text" >
-                        </td>
-                        <td colspan="4"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="correo_electronico" class="textRight">Correo-Electrónico</label></td>
-                        <td>
-                            <span class="add-on"><i class="icon-asterisk white"></i></span>
-                            <input class="altoMoz" name="correo_electronico" id="correo_electronico" type="text" >
+                            <span class="add-on">
+                            <button class="btn btn-minier btn-warning" id="btnFindBen" style="margin-bottom: 1em;">
+                                <i class="icon-filter  bigger-130 icon-only"></i>
+                            </button>
+                            </span>
                         </td>
                         <td colspan="4"></td>
                     </tr>
@@ -106,16 +70,6 @@ $idbeneficiootorgado  = $_POST['idbeneficiootorgado'];
                     </tr>
 
                     <tr>
-                        <td><label for="idlocalidad" class="textRight">Localidad</label></td>
-                        <td>
-                            <span class="add-on"><i class="icon-asterisk red"></i></span>
-                            <select name="idlocalidad" id="idlocalidad" size="1" style="width:80% !important;" > 
-                            </select>
-                        </td>
-                        <td colspan="4"></td>
-                    </tr>
-
-                    <tr>
                         <td><label for="fecha">Fecha </label></td>
                         <td>
                             <span class="add-on"><i class="icon-asterisk red"></i></span>
@@ -130,6 +84,8 @@ $idbeneficiootorgado  = $_POST['idbeneficiootorgado'];
  
 
     <input type="hidden" name="idbeneficiootorgado" id="idbeneficiootorgado" value="<?php echo $idbeneficiootorgado; ?>">
+    <input type="hidden" name="idbeneficiario" id="idbeneficiario" value="0">
+    <input type="hidden" name="cbeneficiario" id="cbeneficiario" value="">
     <input type="hidden" name="user" id="user" value="<?php echo $user; ?>">
     <div class="form-group w96" style='margin-right: 3em; margin-top: 1em;'>
     	<button type="submit" class="btn btn-primary pull-right" style='margin-right: 4em;'><i class="icon-save"></i>Guardar</button>
@@ -152,6 +108,7 @@ jQuery(function($) {
 
 
 	var idbeneficiootorgado = <?php echo $idbeneficiootorgado ?>;
+    var IdBeneficiario = 0;
 
     var arrItem    = [];
 
@@ -161,17 +118,14 @@ jQuery(function($) {
         $.post(obj.getValue(0) + "data/", {o:1008, t:2021, c:IdBeneficioOtorgado, p:10, from:0, cantidad:0,s:''},
             function(json){
                 if (json.length>0){
-                    $("#ap_paterno").val(json[0].ap_paterno);
-                    $("#ap_materno").val(json[0].ap_materno);
-                    $("#nombre").val(json[0].nombre);
-                    $("#telefono").val(json[0].telefono);
-                    $("#correo_electronico").val(json[0].correo_electronico);
                     $("#idsubcatben").val(json[0].idsubcatben);
                     $("#cantidad").val(json[0].cantidad);
-                    $("#idlocalidad").val(json[0].idlocalidad);
+                    IdBeneficiario = json[0].idbeneficiario;
+                    $("#idbeneficiario").val(json[0].idbeneficiario);
+                    $("#beneficiario").val(json[0].beneficiario);
+                    $("#cbeneficiario").val(json[0].beneficiario);
                     $("#fecha").val(json[0].fecha);
-                    $("input[name=sexo][value="+json[0].sexo+"]").prop('checked', true);
-                    $("#ap_paterno").focus();
+                    $("#idbeneficiario").focus();
                 }
         },'json');
     }
@@ -184,12 +138,9 @@ jQuery(function($) {
 
         var queryString = $(this).serialize();  
         
-        //alert(queryString)
-        // return false;
-
         var data = new FormData();
 
-        // if (validForm()){
+        if (validForm()){
             var IdBeneficioOtorgado = (idbeneficiootorgado==0?0:1)
             $.post(obj.getValue(0) + "data/", {o:1008, t:IdBeneficioOtorgado, c:queryString, p:2, from:0, cantidad:0, s:''},
             function(json) {
@@ -203,9 +154,9 @@ jQuery(function($) {
                         alert(json[0].msg); 
                     }
             }, "json");
-        // }else{
-        //     $("#preloaderPrincipal").hide();
-        // }
+        }else{
+             $("#preloaderPrincipal").hide();
+        }
 
     });
 
@@ -216,16 +167,27 @@ jQuery(function($) {
 
     function validForm(){
 
-        if($("#localidad").val().length <= 0){
-            alert("Faltan el Localidad");
-            $("#localidad").focus();
+        if($("#cantidad").val().length <= 0){
+            alert("Faltan la Cantidad");
+            $("#cantidad").focus();
+            return false;
+        }
+
+        if($("#idbeneficiario").val() <= 0){
+            alert("Faltan el Beneficiario");
+            $("#btnFindBen").focus();
+            return false;
+        }
+
+        if( IdBeneficiario <= 0 ){
+            alert("Faltan el Beneficiario");
+            $("#btnFindBen").focus();
             return false;
         }
 
         return true;
 
     }
-
 
     function getSubCatBen(){
         var nc = "u="+localStorage.nc;
@@ -234,21 +196,6 @@ jQuery(function($) {
             function(json){
                $.each(json, function(i, item) {
                     $("#idsubcatben").append('<option value="'+item.data+'"> '+item.label+'</option>');
-                });
-
-               getCatLoc();   
-                
-            }, "json"
-        );  
-    }
-
-    function getCatLoc(){
-        var nc = "u="+localStorage.nc;
-        $("#idlocalidad").empty();
-        $.post(obj.getValue(0)+"data/", { o:1, t:310, p:0,c:nc,from:0,cantidad:0, s:"" },
-            function(json){
-               $.each(json, function(i, item) {
-                    $("#idlocalidad").append('<option value="'+item.data+'"> '+item.label+'</option>');
                 });
 
                 if (idbeneficiootorgado<=0){ 
@@ -265,6 +212,18 @@ jQuery(function($) {
         );  
     }
 
+    function getBeneficiarios(){
+        var nc = "u="+localStorage.nc;
+        $("#idbeneficiario").empty();
+        $.post(obj.getValue(0)+"data/", { o:1, t:311, p:0,c:nc,from:0,cantidad:0, s:"" },
+            function(json){
+               $.each(json, function(i, item) {
+                    $("#idbeneficiario").append('<option value="'+item.data+'"> '+item.label+'</option>');
+                });
+                
+            }, "json"
+        );  
+    }
 
 	// close Form
 	$(".closeFormUpload").on("click",function(event){
@@ -275,7 +234,7 @@ jQuery(function($) {
     function closeWindow() {
         $("#preloaderPrincipal").hide();
         $("#contentProfile").hide(function(){
-            $("#contentProfile").html("");
+            $("#contentProfile").empty();
             $("#contentMain").show();
         });
         resizeScreen();
@@ -288,18 +247,48 @@ jQuery(function($) {
         autoclose: true
     });
 
-/*
-    $('.date-picker').on('changeDate', function(event){
-        $(this).datepicker('hide');
-        //validDate();
-    });
-*/
-
     $('.date-picker').val(obj.getDateToday());
 
     getSubCatBen();
+    getBeneficiarios();
+
+    $("#btnFindBen").on('click', function(event) {
+        event.preventDefault();
+        $("#contentLevel3").empty();
+        $("#contentProfile").hide(function(){
+            $("#preloaderPrincipal").show();
+            obj.setIsTimeLine(false);
+            var nc = localStorage.nc;
+            $.post(obj.getValue(0) + "find-beneficiario/", {
+                    user: nc,
+                },
+                function(html) {                    
+                    $("#contentLevel3").html(html).show('slow',function(){
+                        $('#breadcrumb').html(getBar('Inicio, Captura de Servicios'));
+                    });
+                }, "html");
+        });
+        return false;
+
+    });
+
 
 	var stream = io.connect(obj.getValue(4));
+
+    stream.on("servidor", jsNewConcepto);
+    function jsNewConcepto(datosServer) {
+        var ms = datosServer.mensaje.split("|");
+        //alert(datosServer);
+        //obj.setIsTimeLine(true);
+        if (ms[1]=='FINDBEN') {
+            //onClickFillTable();
+            IdBeneficiario = ms[2];
+            $("#idbeneficiario").val(ms[2]);
+            $("#beneficiario").val(ms[3]);
+            $("#cbeneficiario").val(ms[3]);
+        }
+    }
+
 
 
 });
