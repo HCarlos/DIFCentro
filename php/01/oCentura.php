@@ -1531,6 +1531,14 @@ class oCentura {
 					parse_str($cad);
 			        $idemp = $this->getIdEmpFromAlias($u);
 			        $tr = intval($tiporeporte);
+			        
+			        
+			        $f0 = explode("-",$fi);
+			        $fi = $f0[2].'-'.$f0[1].'-'.$f0[0];
+
+			        $f1 = explode("-",$ff);
+			        $ff = $f1[2].'-'.$f1[1].'-'.$f1[0];
+
 
 			        $where = "";
 			        switch ($tr) {

@@ -77,10 +77,10 @@ include("includes/metas.php");
 						</div>
 
 						<input type="hidden" id="u" name="u" />
-						<input type="hidden" id="cidbeneficio" name="cidbeneficio" value="" />
-						<input type="hidden" id="cidsubcatben" name="cidsubcatben" value="" />
-						<input type="hidden" id="cconceptos" name="cconceptos" value="" />
-						<input type="hidden" id="concepto" name="concepto" value="" />
+						<input type="hidden" id="cComunidad" name="cComunidad" value="" />
+						<input type="hidden" id="cBloque" name="cBloque" value="" />
+						<input type="hidden" id="cServicio" name="cServicio" value="" />
+						<input type="hidden" id="cTipoReporte" name="cTipoReporte" value="" />
 
 					</form>
 
@@ -102,98 +102,18 @@ jQuery(function($) {
 
 	$("#preloaderPrincipal").hide();
 
-	/*
-	$("#rowTBeca").hide(); 
-	$(".rowVencimientos").hide(); 
-	$(".serviciosCobrados").hide();
-	*/ 
-
 	$("#u").val( localStorage.nc );
 
     $("#frmPanelRep1").on("unsubmit");
     $("#frmPanelRep1").on("submit", function(event) {
         event.preventDefault();
-        /*
-        if ( !ValidateForm() ){
-        	return false;
-        }
-        var opt = parseInt( $(".formato:checked").val() );
-        var tr = parseInt($("#tiporeporte").val(),0);
-        var url, PARAMS, queryString, nRep;
-        
-        $("#cconceptos").val( $("#conceptos option:selected").text() );
-        $("#ctipobeca").val( $("#tipoBeca option:selected").text() );
-        $("#cidbeneficio").val( $("#idbeneficio option:selected").text() );
-        $("#cidsubcatben").val( $("#idsubcatben option:selected").text() );
-        $("#concepto").val( $("#idlocalidad option:selected").text() );
 
-        queryString = $("#frmPanelRep1").serialize();
+        	$("#cComunidad").val( $("#idlocalidad option:selected").text()  );
+        	$("#cBloque").val( $("#idbeneficio option:selected").text()  );
+        	$("#cServicio").val( $("#idsubcatben option:selected").text()  );
+        	$("#cTipoReporte").val( $("#tiporeporte option:selected").text()  );
 
-        // alert(queryString);
- 
-        if ( opt == 0) {
-	        switch( tr ){
-	        	case 0:
-					nRep = "rep-caja-niv-concepto-arji/";
-	        		break;
-	        	case 1:
-					nRep = "rep-caja-movimientos-arji/";
-	        		break;
-	        	case 2:
-					nRep = "rep-caja-niv-concepto-descto/";
-	        		break;
-	        	case 3:
-					nRep = "rep-caja-vencimiento-1/";
-	        		break;
-	        	case 4:
-					
-					// nRep = "rep-caja-vencimiento-1/";
-					
-					getViewRecordatorios();
-					return false;
-	        		break;
-
-	        	case 5:
-					nRep = "rep-caja-niv-concepto-recargo/";
-	        		break;
-	        }
-
-			url = obj.getValue(0)+nRep;
-			
-			PARAMS = {data:queryString};
-
-			var temp=document.createElement("form");
-			temp.action=url;
-			temp.method="POST";
-			temp.target="_blank";
-			temp.style.display="none";
-			for(var x in PARAMS) {
-				var opt=document.createElement("textarea");
-				opt.name=x;
-				opt.value=PARAMS[x];
-				temp.appendChild(opt);
-			}
-			document.body.appendChild(temp);
-			temp.submit();
-			return temp;
-		}else{
-
-
-	        switch( tr ){
-	        	case 0:
-					// nRep = "rep-caja-niv-concepto-arji/";
-					return false;
-	        		break;
-	        	case 1:
-					nRep = "rep-caja-movimientos-arji/";
-	        		break;
-	        }
-			
-			url = obj.getValue(0)+nRep;
-			*/
-		
 			var queryString = $("#frmPanelRep1").serialize();
-
 			PARAMS = {data:queryString};
 
 	        $("#contentProfile").empty();
@@ -230,10 +150,6 @@ jQuery(function($) {
 		var startDate = $('#fi').val(); //.replace('-','/');
 		var endDate = $('#ff').val(); //.replace('-','/');
 		
-		// alert(startDate.getTime());
-		// alert(endDate.getTime());
-		
-
 		if( obj.getDateDiff(startDate,endDate,'-') < 0 ){
 		   alert("Rango de fecha incongruente");
 		   return false;

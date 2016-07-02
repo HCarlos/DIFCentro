@@ -1,3 +1,4 @@
+echo "# DIFCentro" >> README.md
 git remote set-url origin https://github.com/HCarlos/DIFCentro.git
 git config --global user.name "HCarlos"
 git config --global color.ui true
@@ -11,7 +12,7 @@ git status
 # git add src/
 git add .
 
-git commit -m "DIFCentro Update 1"
+git commit -m "DIFCentro Update 2"
 
 git push -u origin master --force
 

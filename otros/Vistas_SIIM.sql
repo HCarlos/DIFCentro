@@ -280,6 +280,7 @@ From cat_beneficiarios ben
 Left Join _vi_Localidades l 
 	On ben.idlocalidad = l.idlocalidad
 
+
 Create or Replace View _vi_Beneficios_Otorgados	As 
 Select 
 	bo.idbeneficiootorgado, 
@@ -289,12 +290,20 @@ Select
 	ben.categoria,
 	ben.idlocalidad,
 	ben.localidad,
+	ben.telefono,
+	ben.correo_electronico,
+	ben.sexo,
+	CASE 
+		WHEN ben.sexo = 0 THEN "INDEFINIDO"
+		WHEN ben.sexo = 1 THEN "HOMBRE" 
+		ELSE "MUJER" END AS csexo,
 	bo.idsubcatben, 
 	sb.idbeneficio,
 	sb.beneficio,
 	sb.subcategoria,
 	bo.cantidad,
-	DATE_FORMAT(bo.fecha,"%d-%m-%Y") as fecha, 
+	bo.fecha,
+	DATE_FORMAT(bo.fecha,"%d-%m-%Y") as fecha2, 
 	bo.observaciones, 
 	bo.status_beneficio_otorgado, 
 	bo.idemp

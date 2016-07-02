@@ -21,6 +21,8 @@ parse_str($data);
 
 $rs = $f->getQuerys(2022,$data);
 
+// print count($rs);
+
 // if ( count($rs) > 0 ){
 // 	$l=0;
 // 	$r0=$r1=$r2=$r3=$r4=0;
@@ -60,7 +62,7 @@ $rs = $f->getQuerys(2022,$data);
 			<div class="widget-toolbar orange pull-left no-border ">
 				<h3 class="grey lighter  pull-left position-relative wd100prc">
 					<i class="icon-print green"></i>
-					LISTA DE BENEFICIARIOS
+					LISTA DE BENEFICIARIOS (<small><?= $cTipoReporte; ?></small>)
 				</h3>
 			</div>
 
@@ -116,6 +118,7 @@ $rs = $f->getQuerys(2022,$data);
 jQuery(function($) {
 
 	var oTable;
+	var queryString = "<?= $data; ?>";
 
 	$("#alerta").hide();	
 
@@ -156,16 +159,28 @@ jQuery(function($) {
 		return false;
 	});
 
-	$(".clsidfac0").on("click",function(event){
+	$("#printFormato1").on('click', function(event) {
 		event.preventDefault();
-		var item = this.id.split('*');
-		window.open(obj.getValue(0) + "uw_fe/"+item[1],'_blank');
-	});
 
-	$(".clsidfac1").on("click",function(event){
-		event.preventDefault();
-		var item = this.id.split('*');
-		window.open(obj.getValue(0) + "uw_fe/"+item[1],'_blank');
+		url = obj.getValue(0)+"print-beneficiario-filter-xls-1/";
+		
+		PARAMS = {data:queryString};
+
+		var temp=document.createElement("form");
+		temp.action=url;
+		temp.method="POST";
+		temp.target="_blank";
+		temp.style.display="none";
+		for(var x in PARAMS) {
+			var opt=document.createElement("textarea");
+			opt.name=x;
+			opt.value=PARAMS[x];
+			temp.appendChild(opt);
+		}
+		document.body.appendChild(temp);
+		temp.submit();
+		return temp;
+
 	});
 
 	getTable();
